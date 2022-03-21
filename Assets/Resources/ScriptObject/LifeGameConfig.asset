@@ -15,3 +15,6 @@ MonoBehaviour:
   LiveSprite: {fileID: 21300000, guid: a3e88df09d00f7241885476d75ae595a, type: 3}
   DeadSprite: {fileID: 21300000, guid: 7781a909388b8cc46bb161d767d95944, type: 3}
   ObstacleSprite: {fileID: 21300000, guid: a690c86bfdf875b4c8c70164e95fe23f, type: 3}
+  Sheep: {fileID: 21300000, guid: c195fcb85881b6746b178b049e7436b7, type: 3}
+  Grass: {fileID: 21300000, guid: 372f2eaea03e2f14182b9ca2ba0bf8d6, type: 3}
+  Tree: {fileID: 21300000, guid: 304ca72129b44f4438e7bfdf8dd2f0b0, type: 3}

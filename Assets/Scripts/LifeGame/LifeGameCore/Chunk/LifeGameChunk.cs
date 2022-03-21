@@ -5,13 +5,24 @@ public class LifeGameChunk : MonoBehaviour
 {
     public SpriteRenderer DisplayPicture;
     public LifeGameChunkType LifeType;
-
-    public void SetLocalPos(Vector3 pos)
+    public int allLine;
+    public int allColumn;
+    public int curIndex;
+    
+    public virtual void SetLocalPos(Vector3 pos)
     {
         transform.localPosition = pos;
     }
+    
+    public virtual void SetNumInfo(int line,int column,int index)
+    {
+        allLine = line;
+        allColumn = column;
+        curIndex = index;
+    }
+    
 
-    public void Process(LifeGameChunkType lifeType)
+    public virtual void Process(LifeGameChunkType lifeType)
     {
         LifeType = lifeType;
         switch (LifeType)
@@ -28,11 +39,11 @@ public class LifeGameChunk : MonoBehaviour
         }
     }
 
-    public void OnPointerClick()
+    public virtual void OnPointerClick()
     {
         int offset = (int) LifeType + 1;
-        int allEnumCount = GameControllerChessBoard.instance.LifeGameChunkTypeCount;
-        int newValue = offset % (allEnumCount - 1);
+        int allEnumCount = GameControllerChessBoard.instance.GetCurModeTypeCount();
+        int newValue = offset % allEnumCount;
         LifeGameChunkType changeType = (LifeGameChunkType) newValue;
         Process(changeType);
     }

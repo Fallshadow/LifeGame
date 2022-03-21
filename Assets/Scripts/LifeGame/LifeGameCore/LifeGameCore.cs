@@ -36,7 +36,11 @@ public static class LifeGameCore
         {
             for (int column = 0; column < allColumn; column++)
             {
-                if(data[line][column] == (int)LifeGameChunkType.Obstacle) continue;
+                if (data[line][column] == (int) LifeGameChunkType.Obstacle)
+                {
+                    dataNew[line][column] = 2;
+                    continue;
+                }
                 int live = 0;
                 int liveAdd, deadAdd, obstacleAdd = 0;
                 JudgeState(allLine, allColumn, line - 1, column - 1, data, out  liveAdd, out  deadAdd, out  obstacleAdd);

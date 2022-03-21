@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,7 +26,8 @@ public class LifeGameUI : MonoBehaviour
 
     public int Height = 10;
     public int Width = 10;
-    
+
+    public Dropdown GameMode;
     public Text BornText;
     public InputField BornInput;
     public Text LiveText;
@@ -50,7 +52,7 @@ public class LifeGameUI : MonoBehaviour
         MoreDeadInput.onEndEdit.AddListener(UpdateMoreDead);
         LessDeadInput.onEndEdit.AddListener(UpdateLessDead);
         
-        BornBtn.onClick.AddListener(() => {GameControllerChessBoard.instance.ChessBoard.BornChunks(Height, Width);});
+        BornBtn.onClick.AddListener(Born);
         RefreshBtn.onClick.AddListener(() => {GameControllerChessBoard.instance.ChessBoard.RefreshChunks();});
         RandomBtn.onClick.AddListener(() => {GameControllerChessBoard.instance.RandomChessBoard();});
         AdaptiveScreenBtn.onClick.AddListener(() => { GameControllerChessBoard.instance.AdaptiveScreen();});
@@ -60,6 +62,8 @@ public class LifeGameUI : MonoBehaviour
         
         UpdateSpeedInput.onEndEdit.AddListener(UpdateSpeed);
         UpdateSpeedSlider.onValueChanged.AddListener(UpdateSpeed);
+        
+        GameMode.onValueChanged.AddListener(UpdateGameMode);
         
         UpdateHeight("10");
         UpdateWidth("10");
@@ -71,8 +75,33 @@ public class LifeGameUI : MonoBehaviour
         UpdateMoreDead(GameControllerChessBoard.instance.MoreDeadCount.ToString());
         
         UpdateSpeed(GameControllerChessBoard.instance.UpdateTimer.ToString());
+        UpdateGameMode(0);
+        InitUi();
     }
 
+    protected virtual void InitUi()
+    {
+        
+    }
+    
+    protected virtual void Born()
+    {
+        GameControllerChessBoard.instance.ChessBoard.BornChunks(Height, Width);
+    }
+
+    protected virtual void UpdateGameMode(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                GameControllerChessBoard.instance.GameMode = LifeGameMode.TwoState_LD;
+                break;
+            case 1:
+                GameControllerChessBoard.instance.GameMode = LifeGameMode.ThreeState_LDO;
+                break;
+        }
+    }
+    
     private void UpdateHeight(string inputContent)
     {
         Height = int.Parse(inputContent);

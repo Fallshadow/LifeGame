@@ -5,7 +5,6 @@ using Random = UnityEngine.Random;
 public class GameControllerChessBoard : SingletonMonoBehaviorNoDestroy<GameControllerChessBoard>
 {
     public LifeGameChessBoard ChessBoard;
-    public int LifeGameChunkTypeCount = 0;
     public byte LiveCount = 2;
     public byte BornCount = 3;
     public byte LessDeadCount = 2;
@@ -13,16 +12,24 @@ public class GameControllerChessBoard : SingletonMonoBehaviorNoDestroy<GameContr
     public bool StartUpdate = false;
     public float UpdateTimer = 5;
     public float NowTimer = 0;
+    public LifeGameMode GameMode = LifeGameMode.TwoState_LD;
 
     [Header("相机相关")] public float MoveSpeed = 10;
     public float MoveSpeedPowerConfig = 10;
     public float MoveSpeedPower = 1;
     public float SizeSpeed = 1;
 
-
-    private void Start()
+    public byte GetCurModeTypeCount()
     {
-        LifeGameChunkTypeCount = Enum.GetValues(typeof(LifeGameChunkType)).Length;
+        switch (GameMode)
+        {
+            case LifeGameMode.TwoState_LD:
+                return 2;
+            case LifeGameMode.ThreeState_LDO:
+                return 3;
+        }
+
+        return 0;
     }
 
     private void Update()
@@ -47,7 +54,15 @@ public class GameControllerChessBoard : SingletonMonoBehaviorNoDestroy<GameContr
             datas[line] = new byte[ChessBoard.WidthNum];
             for (int column = 0; column < datas[line].Length; column++)
             {
-                datas[line][column] = (byte) Random.Range(0, 2);
+                switch (GameMode)
+                {
+                    case LifeGameMode.TwoState_LD:
+                        datas[line][column] = (byte) Random.Range(0, 2);
+                        break;
+                    case LifeGameMode.ThreeState_LDO:
+                        datas[line][column] = (byte) Random.Range(0, 3);
+                        break;
+                }
             }
         }
 

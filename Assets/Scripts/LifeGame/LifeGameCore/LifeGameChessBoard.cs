@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.Collections;
 using UnityEngine;
@@ -8,12 +9,15 @@ public class LifeGameChessBoard : MonoBehaviour
     // 1 1 0,0    2,1 0,0.5
     public int HeightNum;
     public int WidthNum;
-
+    public Action UpdateChessBoardCB = null;
+    
     [ReadOnly] public Vector3 StartPos = Vector3.zero;
 
     public Transform StartTrans = null;
     public GameObject ChunkPrefab = null;
     private List<LifeGameChunk> allChunks = new List<LifeGameChunk>();
+
+    public byte[][] CurDatas = null;
 
     public void BornChunks(int h, int w)
     {
@@ -43,6 +47,7 @@ public class LifeGameChessBoard : MonoBehaviour
             float curY = -curLine;
             float curX = column;
             allChunks[index].SetLocalPos(new Vector3(curX, curY, 0));
+            allChunks[index].SetNumInfo(curLine, column, index);
         }
         
         GameControllerChessBoard.instance.AdaptiveScreen();
@@ -97,6 +102,8 @@ public class LifeGameChessBoard : MonoBehaviour
                 chunks[dataIndex].Process((LifeGameChunkType)datas[lineIndex][column]);
             }
         }
+        CurDatas = datas;
+        UpdateChessBoardCB?.Invoke();
     }
 
     private void setChessBoardHW(int h, int w)
@@ -114,10 +121,10 @@ public class LifeGameChessBoard : MonoBehaviour
         StartTrans.position = StartPos;
     }
 
-    private void Update()
-    {
-#if UNITY_EDITOR
-        updateStartPos();
-#endif
-    }
+//     private void Update()
+//     {
+// #if UNITY_EDITOR
+//         updateStartPos();
+// #endif
+//     }
 }
