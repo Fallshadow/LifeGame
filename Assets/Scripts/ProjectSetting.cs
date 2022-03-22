@@ -11,7 +11,13 @@ public class ProjectSetting : ScriptableObject
     public Sprite Grass;
     public Sprite Tree;
     
-    public Color LiveColor;
+    public Color LiveColor1;
+    public Color LiveColor2;
+    public Color LiveColor3;
+    public Color LiveColor4;
+    public Color LiveColor5;
     public Color deadColor;
     public float cycleTime = 5;
+    public Vector3 sizeScale = Vector3.one;
+    public float sizeTime = 5;
 }

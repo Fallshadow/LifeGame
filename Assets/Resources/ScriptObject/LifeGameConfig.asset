@@ -20,4 +20,4 @@ MonoBehaviour:
   Tree: {fileID: 21300000, guid: 304ca72129b44f4438e7bfdf8dd2f0b0, type: 3}
   LiveColor: {r: 0.37104392, g: 1, b: 0, a: 1}
   deadColor: {r: 0.509434, g: 0, b: 0, a: 0.8352941}
-  cycleTime: 5
+  cycleTime: 30

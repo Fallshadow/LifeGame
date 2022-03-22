@@ -33,13 +33,46 @@ public class LifeGameChunk : MonoBehaviour
     {
         timer += Time.deltaTime;
         float process = timer / GameController.instance.Config.cycleTime;
-        if (process >= 1)
+        float processSize = timer / GameController.instance.Config.sizeTime;
+        if (process >= 1 && processSize >= 1)
         {
             ResetCycle();
             timer = 0;
         }
 
-        DisplayPicture.color = Color.Lerp(GameController.instance.Config.LiveColor, GameController.instance.Config.deadColor, process);
+        transform.localScale = Vector3.Lerp(Vector3.one, GameController.instance.Config.sizeScale, process);
+        
+        if (process >= 0f && process <= 0.2f)
+        {
+            process = ProcessValue(process,0.2f);
+            DisplayPicture.color = Color.Lerp(GameController.instance.Config.LiveColor1, GameController.instance.Config.LiveColor2, process);
+        }
+        else if (process >= 0.2f && process <= 0.4f)
+        {
+            process = ProcessValue(process,0.4f);
+            DisplayPicture.color = Color.Lerp(GameController.instance.Config.LiveColor2, GameController.instance.Config.LiveColor3, process);
+        }
+        else if (process >= 0.4f && process <= 0.6f)
+        {
+            process = ProcessValue(process,0.6f);
+            DisplayPicture.color = Color.Lerp(GameController.instance.Config.LiveColor3, GameController.instance.Config.LiveColor4, process);
+        }
+        else if (process >= 0.6f && process <= 0.8f)
+        {
+            process = ProcessValue(process,0.8f);
+            DisplayPicture.color = Color.Lerp(GameController.instance.Config.LiveColor4, GameController.instance.Config.LiveColor5, process);
+        }
+        else
+        {
+            process = ProcessValue(process,1f);
+            DisplayPicture.color = Color.Lerp(GameController.instance.Config.LiveColor5, GameController.instance.Config.deadColor, process);
+        }
+    }
+
+    private float ProcessValue(float process,float maxF)
+    {
+        // process = process / 0.4f;
+        return Mathf.PingPong(process, maxF) / maxF;
     }
 
     public virtual void Process(LifeGameChunkType lifeType)
@@ -49,7 +82,8 @@ public class LifeGameChunk : MonoBehaviour
         {
             case LifeGameChunkType.Live:
                 DisplayPicture.sprite = GameController.instance.Config.LiveSprite;
-                DisplayPicture.color = GameController.instance.Config.LiveColor;
+                DisplayPicture.color = GameController.instance.Config.LiveColor1;
+                transform.localScale = Vector3.one;
                 isReset = false;
                 break;
             case LifeGameChunkType.Dead:
