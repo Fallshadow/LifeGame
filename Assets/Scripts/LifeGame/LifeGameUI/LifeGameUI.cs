@@ -42,6 +42,7 @@ public class LifeGameUI : MonoBehaviour
     public byte LessDeadCount = 2;
     public byte MoreDeadCount = 3;
     
+    
     private void Start()
     {
         LineInput.onEndEdit.AddListener(UpdateHeight);

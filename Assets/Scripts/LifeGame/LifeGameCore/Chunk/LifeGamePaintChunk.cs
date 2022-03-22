@@ -29,6 +29,11 @@ public class LifeGamePaintChunk : LifeGameChunk
         transform.localPosition = new Vector3(posRandomX, posRandomY, posZ);
     }
 
+    public override void UpdateColor()
+    {
+        return;
+    }
+
     public override void Process(LifeGameChunkType lifeType)
     {
         LifeType = lifeType;

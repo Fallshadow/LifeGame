@@ -10,7 +10,6 @@ public class LifeGameChessBoard : MonoBehaviour
     public int HeightNum;
     public int WidthNum;
     public Action UpdateChessBoardCB = null;
-    
     [ReadOnly] public Vector3 StartPos = Vector3.zero;
 
     public Transform StartTrans = null;
@@ -18,7 +17,8 @@ public class LifeGameChessBoard : MonoBehaviour
     private List<LifeGameChunk> allChunks = new List<LifeGameChunk>();
 
     public byte[][] CurDatas = null;
-
+    public bool needReset = false;
+    
     public void BornChunks(int h, int w)
     {
         setChessBoardHW(h, w);
@@ -27,6 +27,7 @@ public class LifeGameChessBoard : MonoBehaviour
             LifeGameChunk chunk = Instantiate(ChunkPrefab, StartTrans).GetComponent<LifeGameChunk>();
             allChunks.Add(chunk);
             chunk.Process(LifeGameChunkType.Dead);
+            chunk.ResetCycle();
         }
 
         while (HeightNum * WidthNum < allChunks.Count)
@@ -58,7 +59,16 @@ public class LifeGameChessBoard : MonoBehaviour
         for (int index = 0; index < allChunks.Count; index++)
         {
             allChunks[index].Process(LifeGameChunkType.Dead);
+            allChunks[index].ResetCycle();
         }
+        
+        needReset = true;
+        CurDatas = new byte[HeightNum][];
+        for (int index = 0; index < CurDatas.Length; index++)
+        {
+            CurDatas[index] = new byte[WidthNum];
+        }
+        UpdateChessBoardCB?.Invoke();
     }
 
     public void UpdateChunks()
@@ -81,14 +91,45 @@ public class LifeGameChessBoard : MonoBehaviour
         ProcessChunksByDatas(datas, allChunks);
     }
 
-    public void SetChunks(byte[][] datas)
+    public void UpdateChunksColor()
+    {
+        foreach (var chunk in allChunks)
+        {
+            if (chunk.LifeType == LifeGameChunkType.Dead && !chunk.isReset)
+            {
+                chunk.UpdateColor();
+            }
+        }
+    }
+
+    public void ResetChunks()
+    {
+        foreach (var chunk in allChunks)
+        {
+            chunk.ResetCycle();
+        }
+    }
+
+    public void SetChunks(byte[][] datas, bool needResetP)
+    {
+        if (needResetP)
+        {
+            SetChunks(datas, ResetChunks);
+        }
+        else
+        {
+            SetChunks(datas);
+        }
+    }
+    
+    public void SetChunks(byte[][] datas,Action cb = null)
     {
         if (datas.Length == 0) return;
         if (datas.Length * datas[0].Length != WidthNum * HeightNum)
         {
             BornChunks(datas.Length, datas[0].Length);
         }
-            
+        cb?.Invoke();
         ProcessChunksByDatas(datas, allChunks);
     }
 

@@ -5,6 +5,7 @@ using Random = UnityEngine.Random;
 public class GameControllerChessBoard : SingletonMonoBehaviorNoDestroy<GameControllerChessBoard>
 {
     public LifeGameChessBoard ChessBoard;
+    public LifeGameChessBoard ChessBoardLook = null;
     public byte LiveCount = 2;
     public byte BornCount = 3;
     public byte LessDeadCount = 2;
@@ -13,6 +14,10 @@ public class GameControllerChessBoard : SingletonMonoBehaviorNoDestroy<GameContr
     public float UpdateTimer = 5;
     public float NowTimer = 0;
     public LifeGameMode GameMode = LifeGameMode.TwoState_LD;
+
+    public Color LiveColor;
+    public Color deadColor;
+    public int cycleCount = 10;
 
     [Header("相机相关")] public float MoveSpeed = 10;
     public float MoveSpeedPowerConfig = 10;
@@ -44,6 +49,11 @@ public class GameControllerChessBoard : SingletonMonoBehaviorNoDestroy<GameContr
             ChessBoard.UpdateChunks();
             NowTimer = 0;
         }
+
+        if (ChessBoardLook != null)
+        {
+            ChessBoardLook.UpdateChunksColor();
+        }
     }
 
     public void RandomChessBoard()
@@ -66,6 +76,8 @@ public class GameControllerChessBoard : SingletonMonoBehaviorNoDestroy<GameContr
             }
         }
 
+        ChessBoard.needReset = true;
+        ChessBoard.ResetChunks();
         ChessBoard.SetChunks(datas);
     }
 

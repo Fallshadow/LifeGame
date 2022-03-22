@@ -17,7 +17,8 @@ public class GameController : SingletonMonoBehaviorNoDestroy<GameController>
         {
             PaintChessBoard.UpdateChessBoardCB += () =>
             {
-                CommonChessBoard.SetChunks(PaintChessBoard.CurDatas);
+                CommonChessBoard.SetChunks(PaintChessBoard.CurDatas, PaintChessBoard.needReset);
+                PaintChessBoard.needReset = false;
             };
         }
     }

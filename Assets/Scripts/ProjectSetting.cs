@@ -10,4 +10,8 @@ public class ProjectSetting : ScriptableObject
     public Sprite Sheep;
     public Sprite Grass;
     public Sprite Tree;
+    
+    public Color LiveColor;
+    public Color deadColor;
+    public float cycleTime = 5;
 }

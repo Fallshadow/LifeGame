@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 093a7b3a9620460a9599f27f9f31a795, type: 3}
   m_Name: LifeGameConfig
   m_EditorClassIdentifier: 
-  LiveSprite: {fileID: 21300000, guid: a3e88df09d00f7241885476d75ae595a, type: 3}
-  DeadSprite: {fileID: 21300000, guid: 7781a909388b8cc46bb161d767d95944, type: 3}
+  LiveSprite: {fileID: 21300000, guid: 16bb844c272d38041a368142fb5c3e06, type: 3}
+  DeadSprite: {fileID: 21300000, guid: 16bb844c272d38041a368142fb5c3e06, type: 3}
   ObstacleSprite: {fileID: 21300000, guid: a690c86bfdf875b4c8c70164e95fe23f, type: 3}
   Sheep: {fileID: 21300000, guid: c195fcb85881b6746b178b049e7436b7, type: 3}
   Grass: {fileID: 21300000, guid: 372f2eaea03e2f14182b9ca2ba0bf8d6, type: 3}
   Tree: {fileID: 21300000, guid: 304ca72129b44f4438e7bfdf8dd2f0b0, type: 3}
+  LiveColor: {r: 0.37104392, g: 1, b: 0, a: 1}
+  deadColor: {r: 0.509434, g: 0, b: 0, a: 0.8352941}
+  cycleTime: 5
