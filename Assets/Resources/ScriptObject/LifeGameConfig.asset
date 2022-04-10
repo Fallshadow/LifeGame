@@ -18,6 +18,15 @@ MonoBehaviour:
   Sheep: {fileID: 21300000, guid: c195fcb85881b6746b178b049e7436b7, type: 3}
   Grass: {fileID: 21300000, guid: 372f2eaea03e2f14182b9ca2ba0bf8d6, type: 3}
   Tree: {fileID: 21300000, guid: 304ca72129b44f4438e7bfdf8dd2f0b0, type: 3}
-  LiveColor: {r: 0.37104392, g: 1, b: 0, a: 1}
-  deadColor: {r: 0.509434, g: 0, b: 0, a: 0.8352941}
-  cycleTime: 30
+  Water: {fileID: 21300000, guid: 4ac4e05836e520f438c71e7463e668ec, type: 3}
+  LiveColor1: {r: 0.19737887, g: 1, b: 0, a: 1}
+  LiveColor2: {r: 0.1423431, g: 0.83137256, b: 0, a: 0.80784315}
+  LiveColor3: {r: 0, g: 1, b: 0.81803536, a: 0.6117647}
+  LiveColor4: {r: 0.023584902, g: 0.5697541, b: 1, a: 0.36862746}
+  LiveColor5: {r: 0, g: 0.24652743, b: 1, a: 0.24705882}
+  deadColor: {r: 0.016251087, g: 0, b: 1, a: 1}
+  TreeColor: {r: 1, g: 0, b: 0, a: 1}
+  cycleTime: 10
+  sizeScale: {x: 0.1, y: 0.1, z: 0.1}
+  sizeTime: 10
+  paintSheepTime: 2

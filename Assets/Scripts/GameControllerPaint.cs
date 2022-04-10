@@ -4,7 +4,8 @@ public class GameControllerPaint : SingletonMonoBehaviorNoDestroy<GameController
 {
     public GameObject BackGround;
     public LifeGameChunkType curPaintType = LifeGameChunkType.Dead;
-
+    public bool isWater = false;
+    public bool PaintBool = false;
 
     public void ResizeBackGround(int height, int width)
     {

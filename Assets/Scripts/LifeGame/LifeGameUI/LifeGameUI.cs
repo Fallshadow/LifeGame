@@ -42,6 +42,8 @@ public class LifeGameUI : MonoBehaviour
     public byte LessDeadCount = 2;
     public byte MoreDeadCount = 3;
     
+    public Button DragMode;
+    public Button PressMode;
     
     private void Start()
     {
@@ -54,6 +56,8 @@ public class LifeGameUI : MonoBehaviour
         LessDeadInput.onEndEdit.AddListener(UpdateLessDead);
         
         BornBtn.onClick.AddListener(Born);
+        DragMode.onClick.AddListener(DragBtn);
+        PressMode.onClick.AddListener(PressBtn);
         RefreshBtn.onClick.AddListener(() => {GameControllerChessBoard.instance.ChessBoard.RefreshChunks();});
         RandomBtn.onClick.AddListener(() => {GameControllerChessBoard.instance.RandomChessBoard();});
         AdaptiveScreenBtn.onClick.AddListener(() => { GameControllerChessBoard.instance.AdaptiveScreen();});
@@ -88,6 +92,22 @@ public class LifeGameUI : MonoBehaviour
     protected virtual void Born()
     {
         GameControllerChessBoard.instance.ChessBoard.BornChunks(Height, Width);
+    }
+    
+    protected virtual void DragBtn()
+    {
+        if (GameControllerPaint.instance != null)
+        {
+            GameControllerPaint.instance.PaintBool = true;
+        }
+    }
+    
+    protected virtual void PressBtn()
+    {
+        if (GameControllerPaint.instance != null)
+        {
+            GameControllerPaint.instance.PaintBool = false;
+        }
     }
 
     protected virtual void UpdateGameMode(int index)

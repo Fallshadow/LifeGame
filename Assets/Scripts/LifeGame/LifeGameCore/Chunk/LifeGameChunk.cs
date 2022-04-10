@@ -7,6 +7,8 @@ public class LifeGameChunk : MonoBehaviour
     public LifeGameChunkType LifeType;
     public int allLine;
     public int allColumn;
+    public int curLine;
+    public int curColumn;
     public int curIndex;
     public bool isReset = true;
     public float timer = 0;
@@ -16,17 +18,23 @@ public class LifeGameChunk : MonoBehaviour
         transform.localPosition = pos;
     }
 
-    public void ResetCycle()
+    public virtual void ResetCycle()
     {
         isReset = true;
         timer = 0;
+        transform.localScale = Vector3.one;
+        DisplayPicture.color = GameController.instance.Config.deadColor;
     }
     
     public virtual void SetNumInfo(int line,int column,int index)
     {
-        allLine = line;
-        allColumn = column;
+        // allLine = line;
+        // allColumn = column;
+        curLine = line;
+        curColumn = column;
         curIndex = index;
+        // curLine = (index + 1) / (line) - 1;
+        // curColumn = index - curLine * (column);
     }
 
     public virtual void UpdateColor()
@@ -92,9 +100,12 @@ public class LifeGameChunk : MonoBehaviour
                 {
                     DisplayPicture.color = GameController.instance.Config.deadColor;
                 }
+                transform.localScale = Vector3.one;
                 break;
             case LifeGameChunkType.Obstacle:
                 DisplayPicture.sprite = GameController.instance.Config.ObstacleSprite;
+                DisplayPicture.color = GameController.instance.Config.TreeColor;
+                transform.localScale = Vector3.one;
                 break;
         }
     }

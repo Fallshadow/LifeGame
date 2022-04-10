@@ -27,9 +27,13 @@ public class LifeGameChessBoard : MonoBehaviour
             LifeGameChunk chunk = Instantiate(ChunkPrefab, StartTrans).GetComponent<LifeGameChunk>();
             allChunks.Add(chunk);
             chunk.Process(LifeGameChunkType.Dead);
-            chunk.ResetCycle();
         }
 
+        foreach (var chunk in allChunks)
+        {
+            chunk.ResetCycle();
+        }
+        
         while (HeightNum * WidthNum < allChunks.Count)
         {
             for (int index = allChunks.Count - 1; index > HeightNum * WidthNum - 1; --index)

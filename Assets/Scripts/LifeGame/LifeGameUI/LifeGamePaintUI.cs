@@ -6,13 +6,14 @@ public class LifeGamePaintUI : LifeGameUI
     public Toggle Grass;
     public Toggle Sheep;
     public Toggle Tree;
+    public Toggle Water;
     
     protected override void Born()
     {
         base.Born();
         GameControllerPaint.instance.ResizeBackGround(Height, Width);
     }
-
+    
     protected override void UpdateGameMode(int index)
     {
         switch (index)
@@ -20,10 +21,12 @@ public class LifeGamePaintUI : LifeGameUI
             case 0:
                 GameControllerChessBoard.instance.GameMode = LifeGameMode.TwoState_LD;
                 Tree.gameObject.SetActive(false);
+                Water.gameObject.SetActive(false);
                 break;
             case 1:
                 GameControllerChessBoard.instance.GameMode = LifeGameMode.ThreeState_LDO;
                 Tree.gameObject.SetActive(true);
+                Water.gameObject.SetActive(true);
                 break;
         }
     }
@@ -39,6 +42,7 @@ public class LifeGamePaintUI : LifeGameUI
                 toggleType(LifeGameChunkType.Dead);
                 Sheep.isOn = false;
                 Tree.isOn = false;
+                Water.isOn = false;
             }
         });
         
@@ -49,6 +53,7 @@ public class LifeGamePaintUI : LifeGameUI
                 toggleType(LifeGameChunkType.Live);
                 Grass.isOn = false;
                 Tree.isOn = false;
+                Water.isOn = false;
             }
         });
         
@@ -57,8 +62,22 @@ public class LifeGamePaintUI : LifeGameUI
             if (toggleValue)
             {
                 toggleType(LifeGameChunkType.Obstacle);
+                toggleWaterType(false);
                 Sheep.isOn = false;
                 Grass.isOn = false;
+                Water.isOn = false;
+            }
+        });
+        
+        Water.onValueChanged.AddListener((bool toggleValue) =>
+        {
+            if (toggleValue)
+            {
+                toggleType(LifeGameChunkType.Obstacle);
+                toggleWaterType(true);
+                Sheep.isOn = false;
+                Grass.isOn = false;
+                Tree.isOn = false;
             }
         });
     }
@@ -66,5 +85,10 @@ public class LifeGamePaintUI : LifeGameUI
     private void toggleType(LifeGameChunkType lgct)
     {
         GameControllerPaint.instance.curPaintType = lgct;
+    }
+    
+    private void toggleWaterType(bool isW)
+    {
+        GameControllerPaint.instance.isWater = isW;
     }
 }

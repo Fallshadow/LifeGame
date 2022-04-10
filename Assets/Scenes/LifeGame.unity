@@ -719,6 +719,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayPicture: {fileID: 144519781}
   LifeType: 1
+  allLine: 0
+  allColumn: 0
+  curIndex: 0
+  isReset: 1
+  timer: 0
 --- !u!114 &144519784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2410,6 +2415,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cac411c553f84d509d9d50b06ed6eb8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BackGround: {fileID: 0}
+  curPaintType: 0
 --- !u!114 &594542242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2423,6 +2430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ChessBoard: {fileID: 1133369387}
+  ChessBoardLook: {fileID: 1133369387}
   LiveCount: 2
   BornCount: 3
   LessDeadCount: 2
@@ -2431,6 +2439,9 @@ MonoBehaviour:
   UpdateTimer: 5
   NowTimer: 0
   GameMode: 0
+  LiveColor: {r: 0, g: 0, b: 0, a: 0}
+  deadColor: {r: 0, g: 0, b: 0, a: 0}
+  cycleCount: 10
   MoveSpeed: 10
   MoveSpeedPowerConfig: 10
   MoveSpeedPower: 1
@@ -2448,6 +2459,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Config: {fileID: 0}
+  StartSync: 0
+  CommonChessBoard: {fileID: 0}
+  PaintChessBoard: {fileID: 0}
 --- !u!4 &594542244
 Transform:
   m_ObjectHideFlags: 0
@@ -4455,6 +4469,7 @@ MonoBehaviour:
   StartPos: {x: 0, y: 0, z: 0}
   StartTrans: {fileID: 1958351699}
   ChunkPrefab: {fileID: 144519780}
+  needReset: 0
 --- !u!4 &1133369388
 Transform:
   m_ObjectHideFlags: 0
