@@ -11,4 +11,4 @@ public class GameControllerPaint : SingletonMonoBehaviorNoDestroy<GameController
     {
         BackGround.transform.localScale = new Vector3(width + 2, height + 2, 1);
     }
-} 
+}

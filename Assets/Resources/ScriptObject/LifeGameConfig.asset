@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LiveSprite: {fileID: 21300000, guid: 16bb844c272d38041a368142fb5c3e06, type: 3}
   DeadSprite: {fileID: 21300000, guid: 16bb844c272d38041a368142fb5c3e06, type: 3}
-  ObstacleSprite: {fileID: 21300000, guid: a690c86bfdf875b4c8c70164e95fe23f, type: 3}
+  ObstacleSprite: {fileID: 21300000, guid: 16bb844c272d38041a368142fb5c3e06, type: 3}
   Sheep: {fileID: 21300000, guid: c195fcb85881b6746b178b049e7436b7, type: 3}
   Grass: {fileID: 21300000, guid: 372f2eaea03e2f14182b9ca2ba0bf8d6, type: 3}
   Tree: {fileID: 21300000, guid: 304ca72129b44f4438e7bfdf8dd2f0b0, type: 3}
@@ -26,6 +26,7 @@ MonoBehaviour:
   LiveColor5: {r: 0, g: 0.24652743, b: 1, a: 0.24705882}
   deadColor: {r: 0.016251087, g: 0, b: 1, a: 1}
   TreeColor: {r: 1, g: 0, b: 0, a: 1}
+  WaterColor: {r: 1, g: 0, b: 0.7233753, a: 1}
   cycleTime: 10
   sizeScale: {x: 0.1, y: 0.1, z: 0.1}
   sizeTime: 10

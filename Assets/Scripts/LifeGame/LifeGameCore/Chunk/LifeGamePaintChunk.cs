@@ -51,6 +51,11 @@ public class LifeGamePaintChunk : LifeGameChunk
                         Color later3 = DisplayPicture.color;
                         DisplayPicture.color = new Color(later3.r, later3.g, later3.b, 1);
                         break;
+                    case LifeGameChunkType.Obstacle2:
+                        DisplayPicture.sprite = GetObSprite();
+                        Color later4 = DisplayPicture.color;
+                        DisplayPicture.color = new Color(later4.r, later4.g, later4.b, 1);
+                        break;
                 }
             }
 
@@ -111,6 +116,14 @@ public class LifeGamePaintChunk : LifeGameChunk
                 DisplayPicture.sortingOrder = 0;
                 break;
             case LifeGameChunkType.Obstacle:
+                if (UsePaint)
+                {
+                    ChangeSheep = false;
+                }
+                DisplayPicture.sprite = GetObSprite();
+                DisplayPicture.sortingOrder = curIndex;
+                break;
+            case LifeGameChunkType.Obstacle2:
                 if (UsePaint)
                 {
                     ChangeSheep = false;

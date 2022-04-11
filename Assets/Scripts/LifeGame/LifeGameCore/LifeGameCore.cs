@@ -36,7 +36,7 @@ public static class LifeGameCore
         {
             for (int column = 0; column < allColumn; column++)
             {
-                if (data[line][column] == (int) LifeGameChunkType.Obstacle)
+                if (data[line][column] == (int) LifeGameChunkType.Obstacle || data[line][column] == (int) LifeGameChunkType.Obstacle2)
                 {
                     dataNew[line][column] = 2;
                     continue;
@@ -100,6 +100,9 @@ public static class LifeGameCore
                 dead = 1;
                 break;
             case LifeGameChunkType.Obstacle:
+                obstacle = 1;
+                break;
+            case LifeGameChunkType.Obstacle2:
                 obstacle = 1;
                 break;
         }

@@ -107,6 +107,11 @@ public class LifeGameChunk : MonoBehaviour
                 DisplayPicture.color = GameController.instance.Config.TreeColor;
                 transform.localScale = Vector3.one;
                 break;
+            case LifeGameChunkType.Obstacle2:
+                DisplayPicture.sprite = GameController.instance.Config.ObstacleSprite;
+                DisplayPicture.color = GameController.instance.Config.WaterColor;
+                transform.localScale = Vector3.one;
+                break;
         }
     }
 
