@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 093a7b3a9620460a9599f27f9f31a795, type: 3}
+  m_Name: LifeGameConfig
+  m_EditorClassIdentifier: 
+  LiveSprite: {fileID: 21300000, guid: 16bb844c272d38041a368142fb5c3e06, type: 3}
+  DeadSprite: {fileID: 21300000, guid: 16bb844c272d38041a368142fb5c3e06, type: 3}
+  ObstacleSprite: {fileID: 21300000, guid: 16bb844c272d38041a368142fb5c3e06, type: 3}
+  Sheep: {fileID: 21300000, guid: c195fcb85881b6746b178b049e7436b7, type: 3}
+  Grass: {fileID: 21300000, guid: 372f2eaea03e2f14182b9ca2ba0bf8d6, type: 3}
+  Tree: {fileID: 21300000, guid: 304ca72129b44f4438e7bfdf8dd2f0b0, type: 3}
+  Water: {fileID: 21300000, guid: 4ac4e05836e520f438c71e7463e668ec, type: 3}
+<<<<<<< HEAD
+  LiveColor1: {r: 1, g: 1, b: 1, a: 1}
+  LiveColor2: {r: 0.010236994, g: 0, b: 0.83137256, a: 0.80784315}
+  LiveColor3: {r: 0.04181461, g: 0.047169805, b: 0.009196624, a: 0.6117647}
+  LiveColor4: {r: 0.070588246, g: 0.58431375, b: 0.15657628, a: 0.85490197}
+  LiveColor5: {r: 0.07058823, g: 0.5176471, b: 0.4174768, a: 1}
+  deadColor: {r: 0.7308644, g: 0.9150943, b: 0.70502543, a: 1}
+  TreeColor: {r: 0.61606765, g: 0.9245283, b: 0.4244689, a: 1}
+  cycleTime: 2
+  sizeScale: {x: 0.8, y: 0.8, z: 0.8}
+  sizeTime: 1
+  paintSheepTime: 5
+=======
+  LiveColor1: {r: 0.19737887, g: 1, b: 0, a: 1}
+  LiveColor2: {r: 0.1423431, g: 0.83137256, b: 0, a: 0.80784315}
+  LiveColor3: {r: 0, g: 1, b: 0.81803536, a: 0.6117647}
+  LiveColor4: {r: 0.023584902, g: 0.5697541, b: 1, a: 0.36862746}
+  LiveColor5: {r: 0, g: 0.24652743, b: 1, a: 0.24705882}
+  deadColor: {r: 0.016251087, g: 0, b: 1, a: 1}
+  TreeColor: {r: 1, g: 0, b: 0, a: 1}
+  WaterColor: {r: 1, g: 0, b: 0.7233753, a: 1}
+  cycleTime: 10
+  sizeScale: {x: 0.1, y: 0.1, z: 0.1}
+  sizeTime: 10
+  paintSheepTime: 2
+>>>>>>> eef1c935f3ce1a0eae4b06300ea12ec949e152a0
