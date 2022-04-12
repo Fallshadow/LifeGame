@@ -48,7 +48,7 @@ public class LifeGameChunk : MonoBehaviour
             timer = 0;
         }
 
-        transform.localScale = Vector3.Lerp(Vector3.one, GameController.instance.Config.sizeScale, process);
+        transform.localScale = Vector3.Lerp(Vector3.one, GameController.instance.Config.sizeScale, processSize);
         
         if (process >= 0f && process <= 0.2f)
         {
