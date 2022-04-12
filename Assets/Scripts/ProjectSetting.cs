@@ -19,6 +19,7 @@ public class ProjectSetting : ScriptableObject
     public Color LiveColor5;
     public Color deadColor;
     public Color TreeColor;
+    public Color WaterColor;
 
     public float cycleTime = 5;
     public Vector3 sizeScale = Vector3.one;

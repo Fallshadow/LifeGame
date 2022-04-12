@@ -73,7 +73,7 @@ public class LifeGamePaintUI : LifeGameUI
         {
             if (toggleValue)
             {
-                toggleType(LifeGameChunkType.Obstacle);
+                toggleType(LifeGameChunkType.Obstacle2);
                 toggleWaterType(true);
                 Sheep.isOn = false;
                 Grass.isOn = false;

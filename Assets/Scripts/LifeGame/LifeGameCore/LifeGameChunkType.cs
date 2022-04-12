@@ -3,4 +3,5 @@
     Dead = 0,
     Live,
     Obstacle,
+    Obstacle2,
 }
