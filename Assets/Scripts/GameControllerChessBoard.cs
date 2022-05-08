@@ -96,10 +96,11 @@ public class GameControllerChessBoard : SingletonMonoBehaviorNoDestroy<GameContr
     {
         if (Camera.main == null) return;
         Camera mainCamera = Camera.main;
-        mainCamera.orthographicSize = Mathf.Max(ChessBoard.HeightNum, ChessBoard.WidthNum) / 2 + 1;
+        mainCamera.orthographicSize = Mathf.Max(ChessBoard.HeightNum, ChessBoard.WidthNum)* 0.8f;
         var mainCameraTransform = mainCamera.transform;
         var latePos = mainCameraTransform.position;
-        mainCameraTransform.position = new Vector3(-mainCamera.orthographicSize / 2, 0, latePos.z);
+        // mainCameraTransform.position = new Vector3(-mainCamera.orthographicSize / 2, 0, latePos.z);
+        mainCameraTransform.position = new Vector3(0, 0, latePos.z);
     }
 
     public void UpdateCamera()

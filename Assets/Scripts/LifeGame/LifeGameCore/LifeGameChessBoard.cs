@@ -9,6 +9,7 @@ public class LifeGameChessBoard : MonoBehaviour
     // 1 1 0,0    2,1 0,0.5
     public int HeightNum;
     public int WidthNum;
+    public int BoardType = 0; // 0 数字 1 画板
     public Action UpdateChessBoardCB = null;
     [ReadOnly] public Vector3 StartPos = Vector3.zero;
 
@@ -163,6 +164,14 @@ public class LifeGameChessBoard : MonoBehaviour
         StartPos.x = -(WidthNum - 1) * 0.5f;
         StartPos.y = (HeightNum - 1) * 0.5f;
         StartPos.z = 0;
+        if (BoardType == 0)
+        {
+            StartPos.x *= 1.75f;
+        }
+        else if (BoardType == 1)
+        {
+            StartPos.x -= (StartPos.x * 1.75f);
+        }
         StartTrans.position = StartPos;
     }
 
