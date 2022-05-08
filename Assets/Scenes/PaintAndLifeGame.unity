@@ -1044,6 +1044,10 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7200827513259201, guid: 7b7a1a2d15ab73f429dca63787858dce, type: 3}
+      propertyPath: m_SortingOrder
+      value: -27
+      objectReference: {fileID: 0}
     - target: {fileID: 7200827513259228, guid: 7b7a1a2d15ab73f429dca63787858dce, type: 3}
       propertyPath: m_Name
       value: BackGround (1)
@@ -2809,6 +2813,7 @@ MonoBehaviour:
   StartUpdate: 0
   UpdateTimer: 5
   NowTimer: 0
+  paint: 0
   GameMode: 0
   LiveColor: {r: 0, g: 0, b: 0, a: 0}
   deadColor: {r: 0, g: 0, b: 0, a: 0}
