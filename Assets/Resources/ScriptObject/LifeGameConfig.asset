@@ -17,6 +17,7 @@ MonoBehaviour:
   ObstacleSprite: {fileID: 21300000, guid: 16bb844c272d38041a368142fb5c3e06, type: 3}
   Sheep: {fileID: 21300000, guid: c195fcb85881b6746b178b049e7436b7, type: 3}
   Grass: {fileID: 21300000, guid: 372f2eaea03e2f14182b9ca2ba0bf8d6, type: 3}
+  GrassEmpty: {fileID: 21300000, guid: 31682968c56e9ab449ae9614983242af, type: 3}
   Tree: {fileID: 21300000, guid: 304ca72129b44f4438e7bfdf8dd2f0b0, type: 3}
   Water: {fileID: 21300000, guid: 4ac4e05836e520f438c71e7463e668ec, type: 3}
   LiveColor1: {r: 1, g: 1, b: 1, a: 1}

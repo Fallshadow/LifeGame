@@ -13,6 +13,7 @@ public class GameControllerChessBoard : SingletonMonoBehaviorNoDestroy<GameContr
     public bool StartUpdate = false;
     public float UpdateTimer = 5;
     public float NowTimer = 0;
+    public bool paint = false;
     public LifeGameMode GameMode = LifeGameMode.TwoState_LD;
 
     public Color LiveColor;
@@ -41,7 +42,7 @@ public class GameControllerChessBoard : SingletonMonoBehaviorNoDestroy<GameContr
     {
         UpdateCamera();
 
-        if (!StartUpdate) return;
+        if (!StartUpdate ) return;
 
         NowTimer += Time.deltaTime;
         if (NowTimer >= UpdateTimer)

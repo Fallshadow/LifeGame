@@ -1040,6 +1040,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1133369388}
     m_Modifications:
+    - target: {fileID: 7200827513259201, guid: 7b7a1a2d15ab73f429dca63787858dce, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7200827513259228, guid: 7b7a1a2d15ab73f429dca63787858dce, type: 3}
       propertyPath: m_Name
       value: BackGround (1)
@@ -1086,6 +1090,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7200827513259229, guid: 7b7a1a2d15ab73f429dca63787858dce, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1797127450545179170, guid: 7b7a1a2d15ab73f429dca63787858dce, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

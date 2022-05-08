@@ -81,7 +81,7 @@ public class LifeGamePaintChunk : LifeGameChunk
 
     public void RandomPos()
     {
-        if (LifeType != LifeGameChunkType.Obstacle2)
+        if (LifeType != LifeGameChunkType.Obstacle && LifeType != LifeGameChunkType.Dead && LifeType != LifeGameChunkType.Obstacle2)
         {
             float posRandomX = posX + Random.Range(-0.49f, 0.49f);
             float posRandomY = posY + Random.Range(-0.49f, 0.49f);
@@ -119,9 +119,13 @@ public class LifeGamePaintChunk : LifeGameChunk
                 if (UsePaint)
                 {
                     ChangeSheep = false;
+                    DisplayPicture.sprite = GameController.instance.Config.Grass;
+                }
+                else
+                {
+                    DisplayPicture.sprite = GameController.instance.Config.GrassEmpty;
                 }
                 RandomPos();
-                DisplayPicture.sprite = GameController.instance.Config.Grass;
                 DisplayPicture.sortingOrder = 0;
                 break;
             case LifeGameChunkType.Obstacle:

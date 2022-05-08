@@ -9,6 +9,7 @@ public class ProjectSetting : ScriptableObject
 
     public Sprite Sheep;
     public Sprite Grass;
+    public Sprite GrassEmpty;
     public Sprite Tree;
     public Sprite Water;
     
