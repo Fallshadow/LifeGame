@@ -4,4 +4,5 @@
     Live,
     Obstacle,
     Obstacle2,
+    DeadObstacle,
 }

@@ -6,6 +6,7 @@ public class ProjectSetting : ScriptableObject
     public Sprite LiveSprite;
     public Sprite DeadSprite;
     public Sprite ObstacleSprite;
+    public Sprite DeadObstacleSprite;
 
     public Sprite Sheep;
     public Sprite Grass;
@@ -21,6 +22,7 @@ public class ProjectSetting : ScriptableObject
     public Color deadColor;
     public Color TreeColor;
     public Color WaterColor;
+    public Color DeadObstacleColor;
 
     public float cycleTime = 5;
     public Vector3 sizeScale = Vector3.one;

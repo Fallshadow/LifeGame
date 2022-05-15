@@ -7,6 +7,9 @@ public class LifeGamePaintChunk : LifeGameChunk
     private float posX = 0;
     private float posY = 0;
     private float posZ = 0;
+    private float lastPosX = 0;
+    private float lastPosY = 0;
+    private float lastPosZ = 0;
     private bool UsePaint = false;
     private bool UsePaintNoSheep = false;
     private bool ChangeSheep = false;
@@ -23,7 +26,9 @@ public class LifeGamePaintChunk : LifeGameChunk
         posX = pos.x;
         posY = pos.y;
         posZ = pos.z;
-
+        lastPosX = posX;
+        lastPosY = posY;
+        lastPosZ = posZ;
         RandomPos();
     }
 
@@ -81,16 +86,19 @@ public class LifeGamePaintChunk : LifeGameChunk
 
     public void RandomPos()
     {
-        if (LifeType != LifeGameChunkType.Obstacle && LifeType != LifeGameChunkType.Dead && LifeType != LifeGameChunkType.Obstacle2)
+        if ((LifeType != LifeGameChunkType.Obstacle && LifeType != LifeGameChunkType.Dead && LifeType != LifeGameChunkType.Obstacle2 && LifeType != LifeGameChunkType.DeadObstacle) || (isChange && LifeType != LifeGameChunkType.Obstacle2 && LifeType != LifeGameChunkType.DeadObstacle && !isUsed2))
         {
             float posRandomX = posX + Random.Range(-0.49f, 0.49f);
             float posRandomY = posY + Random.Range(-0.49f, 0.49f);
 
             transform.localPosition = new Vector3(posRandomX, posRandomY, posZ);
+            lastPosX = posRandomX;
+            lastPosY = posRandomY;
+            lastPosZ = posZ;
         }
         else
         {
-            transform.localPosition = new Vector3(posX, posY, posZ);
+            transform.localPosition = new Vector3(lastPosX, lastPosY, lastPosZ);
         }
     }
 
@@ -99,16 +107,32 @@ public class LifeGamePaintChunk : LifeGameChunk
         return;
     }
 
+    private bool isChange = false;
+    private LifeGameChunkType LastType = LifeGameChunkType.Dead;
+    private bool isUsed2 = false;
+
     public override void Process(LifeGameChunkType lifeType)
     {
         LifeType = lifeType;
+        if (LastType != LifeType)
+        {
+            isChange = true;
+            LastType = LifeType;
+        }
+        else
+        {
+            isChange = false;
+        }
+
         switch (LifeType)
         {
             case LifeGameChunkType.Live:
+                isUsed2 = false;
                 if (!UsePaint || UsePaintNoSheep)
                 {
                     return;
                 }
+
                 ChangeSheep = true;
                 DisplayPicture.sprite = GameController.instance.Config.Sheep;
                 RandomPos();
@@ -116,15 +140,13 @@ public class LifeGamePaintChunk : LifeGameChunk
                 DisplayPicture.sortingOrder = curIndex;
                 break;
             case LifeGameChunkType.Dead:
+                isUsed2 = false;
                 if (UsePaint)
                 {
                     ChangeSheep = false;
                     DisplayPicture.sprite = GameController.instance.Config.Grass;
                 }
-                else
-                {
-                    DisplayPicture.sprite = GameController.instance.Config.GrassEmpty;
-                }
+
                 RandomPos();
                 DisplayPicture.sortingOrder = 0;
                 break;
@@ -133,23 +155,42 @@ public class LifeGamePaintChunk : LifeGameChunk
                 {
                     ChangeSheep = false;
                 }
+
                 RandomPos();
                 DisplayPicture.sprite = GetObSprite();
                 DisplayPicture.sortingOrder = curIndex;
                 break;
             case LifeGameChunkType.Obstacle2:
+                isUsed2 = true;
                 if (UsePaint)
                 {
                     ChangeSheep = false;
                 }
+
+                lastPosX = posX;
+                lastPosY = posY;
+                lastPosZ = posZ;
+                
                 RandomPos();
                 DisplayPicture.sprite = GetObSprite();
                 DisplayPicture.sortingOrder = curIndex;
+                break;
+            case LifeGameChunkType.DeadObstacle:
+                isUsed2 = false;
+                if (UsePaint)
+                {
+                    ChangeSheep = false;
+                }
+
+                DisplayPicture.sprite = GameController.instance.Config.GrassEmpty;
+                RandomPos();
+                DisplayPicture.sortingOrder = 0;
                 break;
         }
     }
 
     private bool isWa = false;
+
     public Sprite GetObSprite()
     {
         if (isWa)
@@ -175,6 +216,7 @@ public class LifeGamePaintChunk : LifeGameChunk
             {
                 GameController.instance.PaintChessBoard.needReset = true;
             }
+
             GameController.instance.PaintChessBoard.UpdateChessBoardCB?.Invoke();
         }
     }
@@ -190,6 +232,7 @@ public class LifeGamePaintChunk : LifeGameChunk
         {
             GameController.instance.PaintChessBoard.needReset = true;
         }
+
         GameController.instance.PaintChessBoard.UpdateChessBoardCB?.Invoke();
     }
 

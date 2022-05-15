@@ -27,7 +27,7 @@ public class LifeGameChessBoard : MonoBehaviour
         {
             LifeGameChunk chunk = Instantiate(ChunkPrefab, StartTrans).GetComponent<LifeGameChunk>();
             allChunks.Add(chunk);
-            chunk.Process(LifeGameChunkType.Dead);
+            chunk.Process(LifeGameChunkType.DeadObstacle);
         }
 
         foreach (var chunk in allChunks)
@@ -63,7 +63,7 @@ public class LifeGameChessBoard : MonoBehaviour
     {
         for (int index = 0; index < allChunks.Count; index++)
         {
-            allChunks[index].Process(LifeGameChunkType.Dead);
+            allChunks[index].Process(LifeGameChunkType.DeadObstacle);
             allChunks[index].ResetCycle();
         }
         
@@ -72,6 +72,10 @@ public class LifeGameChessBoard : MonoBehaviour
         for (int index = 0; index < CurDatas.Length; index++)
         {
             CurDatas[index] = new byte[WidthNum];
+            for (int index2 = 0; index2 < CurDatas[index].Length; index2++)
+            {
+                CurDatas[index][index2] = (byte)LifeGameChunkType.DeadObstacle;
+            }
         }
         UpdateChessBoardCB?.Invoke();
     }

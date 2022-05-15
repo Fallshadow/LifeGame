@@ -83,18 +83,21 @@ public class LifeGameChunk : MonoBehaviour
         return Mathf.PingPong(process, maxF) / maxF;
     }
 
+    private bool isUsed2 = false;
     public virtual void Process(LifeGameChunkType lifeType)
     {
         LifeType = lifeType;
         switch (LifeType)
         {
             case LifeGameChunkType.Live:
+                isUsed2 = false;
                 DisplayPicture.sprite = GameController.instance.Config.LiveSprite;
                 DisplayPicture.color = GameController.instance.Config.LiveColor1;
                 transform.localScale = Vector3.one;
                 isReset = false;
                 break;
             case LifeGameChunkType.Dead:
+                isUsed2 = false;
                 DisplayPicture.sprite = GameController.instance.Config.DeadSprite;
                 if (isReset)
                 {
@@ -103,13 +106,27 @@ public class LifeGameChunk : MonoBehaviour
                 transform.localScale = Vector3.one;
                 break;
             case LifeGameChunkType.Obstacle:
+                if (isUsed2)
+                {
+                    DisplayPicture.sprite = GameController.instance.Config.ObstacleSprite;
+                    DisplayPicture.color = GameController.instance.Config.WaterColor;
+                    transform.localScale = Vector3.one;
+                    break;
+                }
                 DisplayPicture.sprite = GameController.instance.Config.ObstacleSprite;
                 DisplayPicture.color = GameController.instance.Config.TreeColor;
                 transform.localScale = Vector3.one;
                 break;
             case LifeGameChunkType.Obstacle2:
+                isUsed2 = true;
                 DisplayPicture.sprite = GameController.instance.Config.ObstacleSprite;
                 DisplayPicture.color = GameController.instance.Config.WaterColor;
+                transform.localScale = Vector3.one;
+                break;
+            case LifeGameChunkType.DeadObstacle:
+                isUsed2 = false;
+                DisplayPicture.sprite = GameController.instance.Config.DeadObstacleSprite;
+                DisplayPicture.color = GameController.instance.Config.DeadObstacleColor;
                 transform.localScale = Vector3.one;
                 break;
         }

@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class LifeGamePaintUI : LifeGameUI
 {
+    public Toggle DeadGrass;
     public Toggle Grass;
     public Toggle Sheep;
     public Toggle Tree;
@@ -35,6 +36,18 @@ public class LifeGamePaintUI : LifeGameUI
     {
         base.InitUi();
         
+        DeadGrass.onValueChanged.AddListener((bool toggleValue) =>
+        {
+            if (toggleValue)
+            {
+                toggleType(LifeGameChunkType.DeadObstacle);
+                Sheep.isOn = false;
+                Tree.isOn = false;
+                Water.isOn = false;
+                Grass.isOn = false;
+            }
+        });
+        
         Grass.onValueChanged.AddListener((bool toggleValue) =>
         {
             if (toggleValue)
@@ -43,6 +56,7 @@ public class LifeGamePaintUI : LifeGameUI
                 Sheep.isOn = false;
                 Tree.isOn = false;
                 Water.isOn = false;
+                DeadGrass.isOn = false;
             }
         });
         
@@ -54,6 +68,7 @@ public class LifeGamePaintUI : LifeGameUI
                 Grass.isOn = false;
                 Tree.isOn = false;
                 Water.isOn = false;
+                DeadGrass.isOn = false;
             }
         });
         
@@ -66,6 +81,7 @@ public class LifeGamePaintUI : LifeGameUI
                 Sheep.isOn = false;
                 Grass.isOn = false;
                 Water.isOn = false;
+                DeadGrass.isOn = false;
             }
         });
         
@@ -78,6 +94,7 @@ public class LifeGamePaintUI : LifeGameUI
                 Sheep.isOn = false;
                 Grass.isOn = false;
                 Tree.isOn = false;
+                DeadGrass.isOn = false;
             }
         });
     }
