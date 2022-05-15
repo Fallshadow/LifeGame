@@ -85,7 +85,7 @@ public static class LifeGameCore
         data = dataNew;
     }
 
-    private static bool checkIndex(int allLine, int allColumn, int line, int column)
+    public static bool checkIndex(int allLine, int allColumn, int line, int column)
     {
         bool lineSafe = line >= 0 && line < allLine;
         bool columnSafe = column >= 0 && column < allColumn;

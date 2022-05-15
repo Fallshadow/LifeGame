@@ -211,7 +211,37 @@ public class LifeGamePaintChunk : LifeGameChunk
             UsePaint = true;
             UsePaintNoSheep = GameControllerPaint.instance.curPaintType != LifeGameChunkType.Live;
             Process(GameControllerPaint.instance.curPaintType);
-            GameController.instance.PaintChessBoard.CurDatas[curLine][curColumn] = (byte) GameControllerPaint.instance.curPaintType;
+            int countsize = GameController.instance.Config.pointsize;
+            int allLine = GameController.instance.PaintChessBoard.CurDatas.Length;
+            int allColumn = GameController.instance.PaintChessBoard.CurDatas[0].Length;
+            for (int index = 0; index < countsize; index++)
+            {
+                int tempNum = countsize - index - 1;
+                if(LifeGameCore.checkIndex(allLine, allColumn, curLine - tempNum, curColumn - tempNum))
+                    GameController.instance.PaintChessBoard.CurDatas[curLine - tempNum][curColumn - tempNum] = (byte) GameControllerPaint.instance.curPaintType;
+                
+                if(LifeGameCore.checkIndex(allLine, allColumn, curLine - tempNum, curColumn))
+                    GameController.instance.PaintChessBoard.CurDatas[curLine - tempNum][curColumn] = (byte) GameControllerPaint.instance.curPaintType;
+                
+                if(LifeGameCore.checkIndex(allLine, allColumn, curLine - tempNum, curColumn + tempNum))
+                    GameController.instance.PaintChessBoard.CurDatas[curLine - tempNum][curColumn + tempNum] = (byte) GameControllerPaint.instance.curPaintType;
+                
+                if(LifeGameCore.checkIndex(allLine, allColumn, curLine, curColumn - tempNum))
+                    GameController.instance.PaintChessBoard.CurDatas[curLine][curColumn - tempNum] = (byte) GameControllerPaint.instance.curPaintType;
+                
+                if(LifeGameCore.checkIndex(allLine, allColumn, curLine, curColumn + tempNum))
+                    GameController.instance.PaintChessBoard.CurDatas[curLine][curColumn + tempNum] = (byte) GameControllerPaint.instance.curPaintType;
+                
+                if(LifeGameCore.checkIndex(allLine, allColumn, curLine + tempNum, curColumn - tempNum))
+                    GameController.instance.PaintChessBoard.CurDatas[curLine + tempNum][curColumn - tempNum] = (byte) GameControllerPaint.instance.curPaintType;
+                
+                if(LifeGameCore.checkIndex(allLine, allColumn, curLine + tempNum, curColumn))
+                    GameController.instance.PaintChessBoard.CurDatas[curLine + tempNum][curColumn] = (byte) GameControllerPaint.instance.curPaintType;
+                
+                if(LifeGameCore.checkIndex(allLine, allColumn, curLine + tempNum, curColumn + tempNum))
+                    GameController.instance.PaintChessBoard.CurDatas[curLine + tempNum][curColumn + tempNum] = (byte) GameControllerPaint.instance.curPaintType;
+            }
+            GameController.instance.PaintChessBoard.SetChunks(GameController.instance.PaintChessBoard.CurDatas,false);
             if (GameControllerPaint.instance.curPaintType == LifeGameChunkType.Dead)
             {
                 GameController.instance.PaintChessBoard.needReset = true;

@@ -30,4 +30,6 @@ public class ProjectSetting : ScriptableObject
     
     [Header("羊死的时间")]
     public float paintSheepTime = 2;
+    [Header("画笔影响的范围 默认1")]
+    public int pointsize = 1;
 }
